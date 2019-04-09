@@ -43,17 +43,49 @@ class DoublyLinkedList:
   def __len__(self):
     return self.length
 
+  # Output_list used to test methods with terminal
+
+  def output_list(self):
+    current_node = self.head
+
+    while current_node is not None:
+      print(current_node.value)
+      current_node = current_node.next
+
+    return
+
   def add_to_head(self, value):
-    pass
+    new_node = ListNode(value)
+    if self.head is None:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      self.head.insert_before(value)
+      self.head = self.head.prev
+    self.length += 1
 
   def remove_from_head(self):
-    pass
+    if self.head is None:
+      return None
+    old_node = self.head
+    self.head.delete()
+    self.head = old_node.next
 
   def add_to_tail(self, value):
-    pass
-
+    new_node = ListNode(value)
+    if self.head is None:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      self.tail.next = new_node
+      new_node.prev = self.tail
+      self.tail = new_node
+      
   def remove_from_tail(self):
-    pass
+    if self.tail is not None:
+      old_tail = self.tail
+      old_tail.delete()
+      self.tail = old_tail.prev
 
   def move_to_front(self, node):
     pass
@@ -66,3 +98,18 @@ class DoublyLinkedList:
     
   def get_max(self):
     pass
+
+
+node1 = ListNode('Hello')
+node2 = ListNode(4)
+node3 = ListNode('testing')
+
+hell = DoublyLinkedList()
+
+hell.add_to_tail('second to last')
+hell.add_to_tail('tail')
+hell.add_to_head('adding')
+hell.add_to_head('new head')
+hell.remove_from_head()
+hell.remove_from_tail()
+hell.output_list()
