@@ -88,23 +88,23 @@ class DoublyLinkedList:
       self.tail = old_tail.prev
 
   def move_to_front(self, node):
-    #error, how to access value of node
-    self.head.insert_before(node)
-    self.head = self.head.prev
-    if node is self.tail:
-      self.tail = self.tail.prev
-    node.delete()
+    pass
 
   def move_to_end(self, node):
     pass
 
   def delete(self, node):
-    node.delete()
+    pass
     
   def get_max(self):
-    pass
-
-
+    max = 0
+    pointer = self.head
+    while pointer:
+      if pointer.value > max:
+        max = pointer.value
+      pointer = pointer.next
+    return max
+    
 node1 = ListNode('Hello')
 node2 = ListNode(4)
 node3 = ListNode('testing')
