@@ -88,13 +88,18 @@ class DoublyLinkedList:
       self.tail = old_tail.prev
 
   def move_to_front(self, node):
-    pass
+    #error, how to access value of node
+    self.head.insert_before(node)
+    self.head = self.head.prev
+    if node is self.tail:
+      self.tail = self.tail.prev
+    node.delete()
 
   def move_to_end(self, node):
     pass
 
   def delete(self, node):
-    pass
+    node.delete()
     
   def get_max(self):
     pass
@@ -110,6 +115,6 @@ hell.add_to_tail('second to last')
 hell.add_to_tail('tail')
 hell.add_to_head('adding')
 hell.add_to_head('new head')
-hell.remove_from_head()
+# hell.remove_from_head()
 hell.remove_from_tail()
 hell.output_list()
