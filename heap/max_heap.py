@@ -27,8 +27,20 @@ class Heap:
       if self.storage[index] > self.storage[parent]:
           # Swap 
         self.storage[index], self.storage[parent] = self.storage[parent], self.storage[index]
-      # Update the Indices of the swapped values 
+    # Update the Indices of the swapped values 
       index = parent
 
   def _sift_down(self, index):
-    pass
+    while index * 2 + 1 <= len(self.storage) - 1:
+      first_child = index * 2 + 1
+      second_child = index * 2 + 2
+      if second_child > len(self.storage) - 1:
+        maxSize = first_child
+      elif self.storage[first_child] > self.storage[second_child]:
+          maxSize = first_child
+      else:
+          maxSize = second_child
+
+      if self.storage[maxSize] > self.storage[index]:
+        self.storage[maxSize], self.storage[index] = self.storage[index], self.storage[maxSize]
+      index = maxSize
